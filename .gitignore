@@ -19,7 +19,7 @@
 
 # production
 /build
-
+/dist-react
 # misc
 .DS_Store
 *.pem

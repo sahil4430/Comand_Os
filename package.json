@@ -2,12 +2,20 @@
   "name": "comand_os",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "main": "src/electron/main.js",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev:react": "react-scripts start",
+    "dev:electron": "electron .",
+    "dev": "next dev",
+  "export": "next export",
+  "serve": "npx serve -s dist-react",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "electo" : "npm run build && electron ."
   },
+ 
   "dependencies": {
     "next": "15.3.4",
     "react": "^19.0.0",
@@ -17,6 +25,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "electron": "^37.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4"
