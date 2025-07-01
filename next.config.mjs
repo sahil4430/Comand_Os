@@ -1,7 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.mjs
+export default {
   output: 'export',
-  distDir: 'dist-react',
+  assetPrefix: '.', 
+  distDir: 'dist-react', // ✅ directory to export the app 
+  basePath: '/comand_os', // ✅ base path for the app
 };
-
-export default nextConfig;

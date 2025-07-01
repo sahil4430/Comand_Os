@@ -9,11 +9,14 @@ function TerminalController() {
     <TerminalOutput key={0}>Welcome to the Comand Os Terminal !</TerminalOutput>,
   ]);
 
-  return (
+  return (<>
+   
+     {/* <div className="flex min-h-screen flex-col items-center text-blue-400 justify-between mx-100 p-24">
+     hello world</div> */}
     <div className="container">
-      {/* <Terminal
+      <Terminal
         name="Comand OS"
-        colorMode={"Dark"}
+        colorMode={ColorMode.Dark}
         onInput={(terminalInput) => {
           console.log(`New terminal input received: '${terminalInput}'`);
 
@@ -24,9 +27,9 @@ function TerminalController() {
         }}
       >
         {terminalLineData}
-      </Terminal> */}
+      </Terminal>
     </div>
-
+    </>
   );
 }
 

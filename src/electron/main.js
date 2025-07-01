@@ -13,9 +13,13 @@ app.on("ready", () => {
             contextIsolation: false,
         },
     });
-    const indexPath = path.join(__dirname, "..", "..", "dist-react", "index.html");
+    // const indexPath = path.join(__dirname, "..", "..", "dist-react", "index.html");
 
 
-    mainWindow.loadFile(path.join(indexPath));
+    // mainWindow.loadFile(path.join(indexPath));
+    mainWindow.loadFile(path.join(__dirname, '..', '..','dist-react', 'index.html'));
+
+    // mainWindow.webContents.openDevTools();
+
 
 })
