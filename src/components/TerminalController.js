@@ -9,11 +9,8 @@ function TerminalController() {
     <TerminalOutput key={0}>Welcome to the Comand Os Terminal !</TerminalOutput>,
   ]);
 
-  return (<>
-   
-     {/* <div className="flex min-h-screen flex-col items-center text-blue-400 justify-between mx-100 p-24">
-     hello world</div> */}
-    <>
+  return (
+    <div>
       <Terminal
       height="100vh"
         name="Comand OS"
@@ -29,8 +26,7 @@ function TerminalController() {
       >
         {terminalLineData}
       </Terminal>
-    </>
-    </>
+    </div>
   );
 }
 
