@@ -18,6 +18,7 @@ app.on("ready", () => {
 
     // mainWindow.loadFile(path.join(indexPath));
     mainWindow.loadFile(path.join(__dirname, '..', '..','dist-react', 'index.html'));
+    // mainWindow.loadURL('http://localhost:3000');
 
     // mainWindow.webContents.openDevTools();
 

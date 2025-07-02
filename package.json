@@ -5,13 +5,16 @@
   "type": "module",
   "main": "src/electron/main.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build ",
+    "start": "echo 'Use Electron to open dist-react/index.html. Do not run next start.'",
     "dev:react": "react-scripts start",
     "dev:electron": "electron .",
-    "dev": "next dev",
+
     "export": "next export",
     "serve": "npx serve -s dist-react",
-    "build": "next build",
-    "start": "next start",
+    
+  
     "lint": "next lint",
     "electo": "npm run build && electron ."
   },

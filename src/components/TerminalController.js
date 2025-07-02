@@ -13,8 +13,9 @@ function TerminalController() {
    
      {/* <div className="flex min-h-screen flex-col items-center text-blue-400 justify-between mx-100 p-24">
      hello world</div> */}
-    <div className="container">
+    <>
       <Terminal
+      height="100vh"
         name="Comand OS"
         colorMode={ColorMode.Dark}
         onInput={(terminalInput) => {
@@ -28,7 +29,7 @@ function TerminalController() {
       >
         {terminalLineData}
       </Terminal>
-    </div>
+    </>
     </>
   );
 }
