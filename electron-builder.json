@@ -1,0 +1,26 @@
+{
+    
+  "appId": "com.sahil.comand_os",
+  "productName": "CommandOS",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "dist-react/**/*",
+    "src/electron/**/*"
+  ],
+  "mac": {
+    "target": "dmg",
+    "icon": "public/icon.icns"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "Utility"
+  },
+  "win": {
+    "target": [
+      "portable",
+      "nsis"
+    ]
+  }
+}
