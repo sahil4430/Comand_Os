@@ -28,7 +28,7 @@ find.stdout.on('data', (data) => {
 
 find.stderr.on('data', (data) => {
   const msg = data.toString();
-  if (!msg.includes('Operation not permitted') && !msg.includes('Permission denied')) {
+  if ( msg && !msg.includes('Operation not permitted') && !msg.includes('Permission denied')) {
     console.error(`AError: ${msg}`);
   }
 });
