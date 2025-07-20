@@ -14,12 +14,13 @@ import {spawn} from 'child_process';
 // });
 const find = spawn('find', [
   '/Users',
+  '/Development',
   '/Applications',
   '/Volumes',
   '-type',
   'd',
   '-iname',
-  '*nexttttttttttttttt$*'
+  '*web*' 
 ]);
 
 find.stdout.on('data', (data) => {
