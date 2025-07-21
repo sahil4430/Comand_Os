@@ -19,7 +19,7 @@ import os from 'node:os';
     switch(platform){
         case 'darwin':
             command ='open';
-            arg =['-a', appName ];
+            arg =['-a', `${appName}` ];
             if ( filePath){
                 arg.push (filePath);}
             break;
@@ -37,13 +37,16 @@ import os from 'node:os';
                 return;
          }
 
-         const app = spawn( command , arg ,{shell : true});
+         const app = spawn( command , arg );
          app.stdout.on('data', (data ) => {
             console.log(`Stdout: ${data}`);
          });
          app.stderr.on('data',(data) =>{
             console.log(`stderrr : ${data}`)
-         });}
+         })
+         app.on('error', (err) => {
+    console.error(`Failed to start process: ${err}`);
+  });}
 
-         launchApp('System Settings');
+         launchApp('Google Chrome');
 
