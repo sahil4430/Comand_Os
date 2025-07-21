@@ -19,7 +19,7 @@ import os from 'node:os';
     switch(platform){
         case 'darwin':
             command ='open';
-            arg =['-a', `${appName}` ];
+            arg =['-a', appName ];
             if ( filePath){
                 arg.push (filePath);}
             break;
