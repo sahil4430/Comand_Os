@@ -37,7 +37,6 @@ function launchApp(appName, filePath = null) {
             console.log("unsupported platform");
             return;
     }
-
     const app = spawn(command, arg);
     app.stdout.on('data', (data) => {
         console.log(`Stdout: ${data}. done launching ${appName}`);
@@ -49,6 +48,5 @@ function launchApp(appName, filePath = null) {
         console.error(`Failed to start process: ${err}`);
     });
 }
-
 launchApp('Google Chrome');
 
