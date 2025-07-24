@@ -17,11 +17,14 @@ function TerminalController() {
         colorMode={ColorMode.Dark}
         onInput={(terminalInput) => {
           console.log(`New terminal input received: '${terminalInput}'`);
-
-          setTerminalLineData(prev => [
+          window.electronAPI.runCommand(terminalInput).then((response)=>{
+            setTerminalLineData(prev => [
             ...prev,
             <TerminalOutput key={prev.length}>{`> ${terminalInput}`}</TerminalOutput>,
+            <TerminalOutput key= {prev.length +1}>{response}</TerminalOutput>
           ]);
+          })
+          
         }}
       >
         {terminalLineData}

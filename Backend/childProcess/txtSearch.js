@@ -12,7 +12,11 @@ import {spawn} from 'child_process';
 // find.on('close',(code)=>{
 //     console.log(`childprossess exited with ${code}`)
 // });
-const find = spawn('find', [
+
+export  function SearchFile(dirname){
+  return new Promise ((resolve,reject)=>{
+    const result =[];
+  const find = spawn('find', [
   '/Users',
   '/Development',
   '/Applications',
@@ -25,6 +29,7 @@ const find = spawn('find', [
 
 find.stdout.on('data', (data) => {
   console.log(data.toString());
+  result.push(data.toString());
 });
 
 find.stderr.on('data', (data) => {
@@ -37,3 +42,8 @@ find.stderr.on('data', (data) => {
 find.on('close', (code) => {
   console.log(`childprocess exited with code ${code}`);
 });
+  })
+
+}
+
+export default SearchFile;
