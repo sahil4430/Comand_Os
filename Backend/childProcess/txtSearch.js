@@ -18,18 +18,22 @@ export  function SearchFile(dirname){
     const result =[];
   const find = spawn('find', [
   '/Users',
-  '/Development',
   '/Applications',
+  '/System/Applications',
   '/Volumes',
-  '-type',
-  'd',
+  '-type','f',
   '-iname',
-  '*web*' 
+  `*${dirname}*`
 ]);
 
 find.stdout.on('data', (data) => {
-  console.log(data.toString());
-  result.push(data.toString());
+  const output = data.toString();
+  if(output){
+    const line  = output.split('/n').filter(line => line.trim());
+    result.push(...lines);
+  }
+  console.log(`found:`, output);
+  // result.push(data.toString());
 });
 
 find.stderr.on('data', (data) => {
@@ -42,7 +46,12 @@ find.stderr.on('data', (data) => {
 find.on('close', (code) => {
   console.log(`childprocess exited with code ${code}`);
 });
-  })
+
+setTimeout(() => {
+  find.kill();
+  reject( new error ('search timeout'))
+}, 30000);
+  });
 
 }
 
