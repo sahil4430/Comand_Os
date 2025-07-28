@@ -12,7 +12,6 @@ import {spawn} from 'child_process';
 // find.on('close',(code)=>{
 //     console.log(`childprossess exited with ${code}`)
 // });
-
 export  function SearchFile(dirname){
   return new Promise ((resolve,reject)=>{
     const result =[];
