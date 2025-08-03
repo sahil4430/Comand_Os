@@ -48,5 +48,5 @@ function launchApp(appName, filePath = null) {
         console.error(`Failed to start process: ${err}`);
     });
 }
-launchApp('Google Chrome');
+launchApp('Contacts');
 

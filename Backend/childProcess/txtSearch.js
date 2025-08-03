@@ -12,46 +12,51 @@ import {spawn} from 'child_process';
 // find.on('close',(code)=>{
 //     console.log(`childprossess exited with ${code}`)
 // });
-export  function SearchFile(dirname){
-  return new Promise ((resolve,reject)=>{
-    const result =[];
-  const find = spawn('find', [
-  '/Users',
-  '/Applications',
-  '/System/Applications',
-  '/Volumes',
-  '-type','f',
-  '-iname',
-  `*${dirname}*`
-]);
+// searchFile.js
+// searchFile.js
 
-find.stdout.on('data', (data) => {
-  const output = data.toString();
-  if(output){
-    const line  = output.split('/n').filter(line => line.trim());
-    result.push(...lines);
-  }
-  console.log(`found:`, output);
-  // result.push(data.toString());
-});
+export function searchFileByName(name) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    const find = spawn('find', [
+      '/Users',
+      '/Applications',
+      '/Volumes',
+      '-type', 'f',
+      '-iname', `*${name}*`
+    ]);
 
-find.stderr.on('data', (data) => {
-  const msg = data.toString();
-  if ( msg && !msg.includes('Operation not permitted') && !msg.includes('Permission denied')) {
-    console.error(`AError: ${msg}`);
-  }
-});
+    find.stdout.on('data', (data) => {
+      const lines = data.toString().split('\n').filter(line => line.trim());
+      results.push(...lines);
+    });
 
-find.on('close', (code) => {
-  console.log(`childprocess exited with code ${code}`);
-});
+    find.stderr.on('data', (data) => {
+      const msg = data.toString();
+      if (!msg.includes('Permission denied')) {
+        console.error(`Error: ${msg}`);
+      }
+    });
 
-setTimeout(() => {
-  find.kill();
-  reject( new error ('search timeout'))
-}, 30000);
+    find.on('close', () => {
+      resolve(results);
+    });
+
+    setTimeout(() => {
+      find.kill();
+      reject(new Error('Search timed out'));
+    }, 30000);
   });
-
 }
+const testFileName = 'web/comand_os'; 
 
-export default SearchFile;
+searchFileByName(testFileName)
+  .then((files) => {
+    console.log(`✅ Found ${files.length} files:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}: ${file}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Error during search:', err.message);
+  });
