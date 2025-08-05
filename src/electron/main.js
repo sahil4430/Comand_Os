@@ -1,11 +1,9 @@
 import { BrowserWindow, app, ipcMain } from "electron";
 import path from "path";
 import { fileURLToPath } from 'url';
-import Interpretcommand from "../../Backend/commandInterpreter.js";
-import SearchFile from "../../Backend/childProcess/txtSearch.js";
-import { createRequire } from 'module';
+// import Interpretcommand from "../../Backend/commandInterpreter.js";
+import launchApp from "../../Backend/childProcess/open.js";
 
-const require = createRequire(import.meta.url);
 
 
 app.on("ready", () => {
@@ -13,6 +11,7 @@ app.on("ready", () => {
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        preload: path.join(__dirname, 'preload.js'),
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true,
@@ -25,11 +24,12 @@ app.on("ready", () => {
     // mainWindow.loadURL('http://localhost:3000');
     // mainWindow.webContents.openDevTools();
 })
+ipcMain.handle('run-command', async (event, terminalInput) => {
+  launchApp(terminalInput);
+  return `Launched: ${terminalInput}`;
+});
 
-ipcMain.handle('run-command', async(event,input)=>{
-    const result = Interpretcommand(input);
-    if (result.action === 'search'){
-        return await SearchFile(result.query);
-    }
-    return "sorry"
-})
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});

@@ -14,8 +14,6 @@
 
 // for all OS we using diff aproach
 
-
-
 function launchApp(appName, filePath = null) {
     const platform = os.platform();
     let command;
@@ -52,6 +50,5 @@ function launchApp(appName, filePath = null) {
         console.error(`Failed to start process: ${err}`);
     });
 }
-// launchApp(`${terminalInput}`);
- module.exports = launchApp; 
+launchApp('System Settings');
 

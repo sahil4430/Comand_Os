@@ -1,5 +1,5 @@
 // const { spawn } = require('node:child_process');
-import { spawn } from 'node:child_process';
+const spawn = require('node:child_process').spawn;
 
 // code to get list of files in /usr directory
 // using spawn method of child_process module

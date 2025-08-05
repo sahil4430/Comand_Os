@@ -5,7 +5,7 @@ function extractquery(input) {
 
 export function Interpretcommand(input) {
     const lowerInput = input.toLowerCase();
-    if(lowerInput.includes('find')|| lowerInput.includes('search')||lowerInput.includes('where')){
+    if(lowerInput.includes('open')|| lowerInput.includes('go')||lowerInput.includes('launch')) {
         return {action :'search' ,query :extractquery(input)
         
         }

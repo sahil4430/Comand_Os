@@ -1,4 +1,5 @@
-import {spawn } from 'child_process';
+const os =  require('os'); 
+const spawn = require('child_process').spawn;
 
 const volume  = spawn ('osascript',['-e', 'set volume output volume 50'])
 volume.stderr.on('data', (data) => {

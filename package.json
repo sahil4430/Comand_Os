@@ -1,8 +1,10 @@
+
 {
   "name": "comand_os",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  "type ": "module",
+
   "main": "src/electron/main.js",
   "scripts": {
     "dev": "next dev",
