@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 // import Interpretcommand from "../../Backend/commandInterpreter.js";
 import launchApp from "../../Backend/childProcess/open.js";
+import setVolume from "../../Backend/childProcess/Volume.js";
 
 
 
@@ -26,9 +27,9 @@ app.on("ready", () => {
 })
 ipcMain.handle('run-command', async (event, terminalInput) => {
   launchApp(terminalInput);
+  setVolume(terminalInput);
   return `Launched: ${terminalInput}`;
 });
-
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();

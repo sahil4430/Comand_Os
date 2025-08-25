@@ -10,6 +10,11 @@ export function Interpretcommand(input) {
         
         }
     }
+    if(lowerInput.includes('Volume')|| lowerInput.includes('voice')||lowerInput.includes('noise')) {
+        return {action :'volume' ,query :extractquery(input)
+        
+        }
+    }
       return {action :'unknown'}  
 }
 // module.exports ={Interpretcommand};
